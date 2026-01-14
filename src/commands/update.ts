@@ -42,11 +42,11 @@ export async function runUpdate(config: Config, options: UpdateOptions = {}): Pr
       console.log(`  - ${tag}`)
     }
     if (hasConfigMapping) {
-      console.log(`\n请在 package.json 的 swagger2ts-codegen.tagMapping 中添加映射`)
+      console.log(`\n请在 package.json 的 swagger-typegen.tagMapping 中添加映射`)
       console.log('示例: "tagMapping": { "包厅": "room", "管理员": "admin" }\n')
     } else {
       console.log(`\n请编辑 ${config.output}/${TAG_MAPPING_FILE} 修改映射后重新运行`)
-      console.log('或在 package.json 的 swagger2ts-codegen.tagMapping 中配置（推荐）\n')
+      console.log('或在 package.json 的 swagger-typegen.tagMapping 中配置（推荐）\n')
     }
   }
 
@@ -57,7 +57,7 @@ export async function runUpdate(config: Config, options: UpdateOptions = {}): Pr
     } else {
       console.log(`\n映射文件已生成: ${config.output}/${TAG_MAPPING_FILE}`)
     }
-    console.log('请编辑映射后运行 swagger2ts-codegen update 生成代码')
+    console.log('请编辑映射后运行 swagger-typegen update 生成代码')
     return
   }
 

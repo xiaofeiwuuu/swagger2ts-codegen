@@ -1,5 +1,5 @@
 /**
- * swagger2ts-codegen 主入口
+ * swagger-typegen 主入口
  * 导出核心功能供编程使用
  */
 

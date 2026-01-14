@@ -46,7 +46,7 @@ export function generateTypesFile(
   const lines: string[] = []
 
   lines.push('/**')
-  lines.push(' * 此文件由 swagger2ts-codegen 自动生成，请勿手动修改')
+  lines.push(' * 此文件由 swagger-typegen 自动生成，请勿手动修改')
   lines.push(' */')
   lines.push('')
 

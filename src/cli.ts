@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * swagger2ts-codegen CLI 入口
+ * swagger-typegen CLI 入口
  */
 
 import { Command } from 'commander'
@@ -13,7 +13,7 @@ import { runUpdate } from './commands/update'
 const program = new Command()
 
 program
-  .name('swagger2ts-codegen')
+  .name('swagger-typegen')
   .description('从 Swagger/OpenAPI 规范生成 TypeScript 类型和 API 函数')
   .version('1.0.0')
 
@@ -23,7 +23,7 @@ program
   .description('检测 Swagger 与现有 API 文件的差异，生成变更报告')
   .action(async () => {
     try {
-      console.log(chalk.cyan('swagger2ts-codegen check'))
+      console.log(chalk.cyan('swagger-typegen check'))
       console.log('')
 
       const config = loadConfig()
@@ -69,7 +69,7 @@ program
   .option('--init-only', '仅生成 tag-mapping.json，不生成代码（用于首次配置映射）')
   .action(async (options) => {
     try {
-      console.log(chalk.cyan('swagger2ts-codegen update'))
+      console.log(chalk.cyan('swagger-typegen update'))
       console.log('')
 
       const config = loadConfig()
@@ -98,7 +98,7 @@ program
 // init 命令 - 生成示例配置
 program
   .command('init')
-  .description('在 package.json 中初始化 swagger2ts-codegen 配置')
+  .description('在 package.json 中初始化 swagger-typegen 配置')
   .action(async () => {
     const fs = await import('fs')
     const path = await import('path')
@@ -113,12 +113,12 @@ program
     try {
       const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
 
-      if (packageJson['swagger2ts-codegen']) {
-        console.log(chalk.yellow('swagger2ts-codegen 配置已存在'))
+      if (packageJson['swagger-typegen']) {
+        console.log(chalk.yellow('swagger-typegen 配置已存在'))
         return
       }
 
-      packageJson['swagger2ts-codegen'] = {
+      packageJson['swagger-typegen'] = {
         input: './swagger.json',
         output: './src/api',
         requestStyle: 'chain',
@@ -133,7 +133,7 @@ program
       console.log(chalk.green('配置已添加到 package.json'))
       console.log('')
       console.log('请根据你的项目修改以下配置:')
-      console.log(chalk.cyan(JSON.stringify(packageJson['swagger2ts-codegen'], null, 2)))
+      console.log(chalk.cyan(JSON.stringify(packageJson['swagger-typegen'], null, 2)))
 
     } catch (error) {
       console.error(chalk.red('写入配置失败:'), error)

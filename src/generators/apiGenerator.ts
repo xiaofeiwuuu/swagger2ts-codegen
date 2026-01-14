@@ -19,7 +19,7 @@ export function generateApiFile(
   const lines: string[] = []
 
   lines.push('/**')
-  lines.push(' * 此文件由 swagger2ts-codegen 自动生成')
+  lines.push(' * 此文件由 swagger-typegen 自动生成')
   lines.push(' * 自动生成的代码在 AUTO GENERATED 标记之间')
   lines.push(' * 标记之外的代码不会被覆盖')
   lines.push(' */')

@@ -1,5 +1,5 @@
 /**
- * Swagger2ts-codegen 类型定义
+ * swagger-typegen 类型定义
  */
 
 // 请求风格

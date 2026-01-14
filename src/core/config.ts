@@ -19,7 +19,7 @@ export function loadConfig(cwd: string = process.cwd()): Config {
 
   try {
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
-    const userConfig = packageJson['swagger2ts-codegen'] || {}
+    const userConfig = packageJson['swagger-typegen'] || {}
 
     // 合并配置，用户配置优先
     const config: Config = {

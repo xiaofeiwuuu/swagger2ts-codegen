@@ -1,4 +1,4 @@
-# swagger2ts-codegen
+# swagger-typegen
 
 从 Swagger/OpenAPI 规范自动生成 TypeScript 类型定义和 API 请求函数。
 
@@ -7,46 +7,46 @@
 ## 安装
 
 ```bash
-npm install swagger2ts-codegen -D
+npm install swagger-typegen -D
 ```
 
 ## 快速开始
 
 ```bash
 # 1. 初始化配置
-npx swagger2ts-codegen init
+npx swagger-typegen init
 
 # 2. 编辑 package.json 中的配置
 
 # 3. 生成 API 文件
-npx swagger2ts-codegen update
+npx swagger-typegen update
 ```
 
 ## 命令
 
-### `swagger2ts-codegen init`
+### `swagger-typegen init`
 
-在 `package.json` 中初始化 `swagger2ts-codegen` 配置。
+在 `package.json` 中初始化 `swagger-typegen` 配置。
 
 ```bash
-npx swagger2ts-codegen init
+npx swagger-typegen init
 ```
 
 执行后会在 `package.json` 中添加默认配置模板。
 
-### `swagger2ts-codegen update`
+### `swagger-typegen update`
 
 根据 Swagger 规范生成/更新 TypeScript 类型和 API 函数。
 
 ```bash
 # 基本用法
-npx swagger2ts-codegen update
+npx swagger-typegen update
 
 # 清理旧目录后重新生成
-npx swagger2ts-codegen update --clean
+npx swagger-typegen update --clean
 
 # 仅生成 tag 映射文件（不生成代码）
-npx swagger2ts-codegen update --init-only
+npx swagger-typegen update --init-only
 ```
 
 **选项：**
@@ -70,12 +70,12 @@ export const getUsers = () => { ... }
 export const customFunction = () => { ... }
 ```
 
-### `swagger2ts-codegen check`
+### `swagger-typegen check`
 
 检测 Swagger 规范与现有 API 文件的差异，生成变更报告 `changelog.md`。
 
 ```bash
-npx swagger2ts-codegen check
+npx swagger-typegen check
 ```
 
 报告内容包括：
@@ -85,11 +85,11 @@ npx swagger2ts-codegen check
 
 ## 配置
 
-在 `package.json` 中添加 `swagger2ts-codegen` 字段：
+在 `package.json` 中添加 `swagger-typegen` 字段：
 
 ```json
 {
-  "swagger2ts-codegen": {
+  "swagger-typegen": {
     "input": "./swagger.json",
     "output": "./src/api",
     "requestStyle": "chain",
@@ -284,7 +284,7 @@ src/api/
 
 ```bash
 # 1. 初始化配置
-npx swagger2ts-codegen init
+npx swagger-typegen init
 
 # 2. 编辑 package.json 配置
 # - 设置 input 为你的 swagger 文件路径
@@ -292,24 +292,24 @@ npx swagger2ts-codegen init
 # - 配置其他选项
 
 # 3. 查看所有 tag 并配置映射
-npx swagger2ts-codegen update --init-only
+npx swagger-typegen update --init-only
 # 根据提示在 package.json 中添加 tagMapping
 
 # 4. 生成代码
-npx swagger2ts-codegen update
+npx swagger-typegen update
 ```
 
 ### 日常更新
 
 ```bash
 # 检查变更
-npx swagger2ts-codegen check
+npx swagger-typegen check
 
 # 更新代码
-npx swagger2ts-codegen update
+npx swagger-typegen update
 
 # 如果需要清理旧目录
-npx swagger2ts-codegen update --clean
+npx swagger-typegen update --clean
 ```
 
 ### 处理新增 tag
@@ -321,7 +321,7 @@ npx swagger2ts-codegen update --clean
 3. 使用 `--clean` 重新生成
 
 ```bash
-npx swagger2ts-codegen update --clean
+npx swagger-typegen update --clean
 ```
 
 ## 注意事项

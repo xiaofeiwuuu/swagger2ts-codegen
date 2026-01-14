@@ -1,11 +1,11 @@
 {
-  "name": "swagger2ts-codegen",
-  "version": "1.0.0",
+  "name": "swagger-typegen",
+  "version": "1.0.2",
   "description": "Generate TypeScript types and API functions from Swagger/OpenAPI specification",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "swagger2ts-codegen": "./dist/cli.js"
+    "swagger-typegen": "./dist/cli.js"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "files": [
     "dist"
   ],
-  "swagger2ts-codegen": {
+  "swagger-typegen": {
     "input": "./swagger-api2.json",
     "output": "./src/api2",
     "requestStyle": "chain",
