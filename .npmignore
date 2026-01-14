@@ -1,0 +1,6 @@
+src/
+tsconfig.json
+.gitignore
+*.log
+swagger-api.json
+changelog.md
