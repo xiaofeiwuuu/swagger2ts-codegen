@@ -34,7 +34,10 @@ export function loadConfig(cwd: string = process.cwd()): Config {
         ? userConfig.unwrapResponseField
         : defaultConfig.unwrapResponseField,
       // tagMapping 对象类型，合并用户配置
-      tagMapping: userConfig.tagMapping || defaultConfig.tagMapping
+      tagMapping: userConfig.tagMapping || defaultConfig.tagMapping,
+      // tag 过滤配置
+      includeTags: userConfig.includeTags || defaultConfig.includeTags,
+      excludeTags: userConfig.excludeTags || defaultConfig.excludeTags
     }
 
     // 路径前缀按长度降序排列，优先匹配长的

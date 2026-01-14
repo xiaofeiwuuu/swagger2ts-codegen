@@ -6,3 +6,4 @@ changelog.md
 swagger-*.json
 src/api2/
 src/api3/
+.pnpm-store

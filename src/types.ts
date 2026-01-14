@@ -30,6 +30,10 @@ export interface Config {
   unwrapResponseField: string | null
   // Tag 名称到目录名的映射（如 { "包厅": "room", "管理员": "admin" }）
   tagMapping: TagMapping
+  // 只包含指定的 tag（白名单模式，为空数组则不过滤）
+  includeTags: string[]
+  // 排除指定的 tag（黑名单模式，为空数组则不过滤）
+  excludeTags: string[]
 }
 
 // 默认配置
@@ -43,7 +47,9 @@ export const defaultConfig: Config = {
   typeNameSuffixFilter: ['Request', 'Response'],
   excludeFields: [],
   unwrapResponseField: 'data',
-  tagMapping: {}
+  tagMapping: {},
+  includeTags: [],
+  excludeTags: []
 }
 
 // Swagger 2.0 类型定义

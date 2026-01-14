@@ -1,6 +1,6 @@
 {
   "name": "swagger-typegen",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "Generate TypeScript types and API functions from Swagger/OpenAPI specification",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,8 @@
     "openapi",
     "typescript",
     "api",
-    "codegen"
+    "codegen",
+    "swagger-typegen"
   ],
   "author": "",
   "license": "MIT",
@@ -31,8 +32,8 @@
     "typescript": "^5.3.0"
   },
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^12.0.0",
-    "chalk": "^4.1.2"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -41,20 +42,24 @@
     "dist"
   ],
   "swagger-typegen": {
-    "input": "./swagger-api2.json",
-    "output": "./src/api2",
+    "input": "./swagger-api.json",
+    "output": "./src/api",
     "requestStyle": "chain",
     "requestClient": "requestClient",
     "requestImport": "@/utils/request",
-    "pathPrefixFilter": ["/api/v1", "/api"],
-    "typeNameSuffixFilter": ["Request", "Response", "Req", "Res"],
-    "excludeFields": ["fingerprint", "two_auth"],
-    "tagMapping": {
-      "管理员": "admin",
-      "认证": "auth",
-      "包厅": "room",
-      "会员": "member",
-      "牌桌": "table"
-    }
+    "pathPrefixFilter": [
+      "/api/v1",
+      "/api"
+    ],
+    "typeNameSuffixFilter": [
+      "Request",
+      "Response",
+      "Req",
+      "Res"
+    ],
+    "excludeFields": [],
+    "tagMapping": {},
+    "includeTags": [],
+    "excludeTags": []
   }
 }

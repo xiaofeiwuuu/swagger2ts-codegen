@@ -100,6 +100,24 @@ export function parseSwagger(
 }
 
 /**
+ * 检查 tag 是否应该被包含
+ */
+function shouldIncludeTag(originalTag: string, config: Config): boolean {
+  // 如果设置了 includeTags（白名单），只包含列表中的 tag
+  if (config.includeTags.length > 0) {
+    return config.includeTags.includes(originalTag)
+  }
+
+  // 如果设置了 excludeTags（黑名单），排除列表中的 tag
+  if (config.excludeTags.length > 0) {
+    return !config.excludeTags.includes(originalTag)
+  }
+
+  // 默认包含所有 tag
+  return true
+}
+
+/**
  * 解析 Swagger 2.0 规范
  */
 function parseSwagger2(
@@ -120,6 +138,12 @@ function parseSwagger2(
     for (const method of methods) {
       const operation = pathItem[method]
       if (!operation) continue
+
+      // 获取原始 tag 名称，检查是否应该包含
+      const originalTag = operation.tags?.[0] || 'default'
+      if (!shouldIncludeTag(originalTag, config)) {
+        continue
+      }
 
       const parsedAPI = parseOperation(path, method, operation, config, usedRefs, spec.definitions || {}, tagMapping)
 
@@ -194,6 +218,12 @@ function parseOpenAPI3(
     for (const method of methods) {
       const operation = pathItem[method]
       if (!operation) continue
+
+      // 获取原始 tag 名称，检查是否应该包含
+      const originalTag = operation.tags?.[0] || 'default'
+      if (!shouldIncludeTag(originalTag, config)) {
+        continue
+      }
 
       const parsedAPI = parseOpenAPI3Operation(path, method, operation, config, usedRefs, schemas, tagMapping)
 

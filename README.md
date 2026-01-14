@@ -102,7 +102,9 @@ npx swagger-typegen check
     "tagMapping": {
       "管理员": "admin",
       "用户": "user"
-    }
+    },
+    "includeTags": [],
+    "excludeTags": []
   }
 }
 ```
@@ -261,6 +263,39 @@ Swagger tag 到目录名的映射。用于将中文 tag 转换为英文目录名
 - 未映射的 tag 会使用原始名称（转驼峰）
 - 运行 `update` 时会提示未映射的 tag
 - 也支持在 `output` 目录下的 `tag-mapping.json` 文件中配置（向后兼容）
+
+#### `includeTags`
+
+**类型：** `string[]`
+**默认值：** `[]`
+
+只包含指定的 tag（白名单模式）。设置后只会生成列表中的 tag 对应的 API。
+
+**示例：** 只生成 APP 端接口
+```json
+{
+  "includeTags": ["POS-APP", "APP公共"]
+}
+```
+
+#### `excludeTags`
+
+**类型：** `string[]`
+**默认值：** `[]`
+
+排除指定的 tag（黑名单模式）。列表中的 tag 不会被生成。
+
+**示例：** 排除 APP 端接口，只生成后台接口
+```json
+{
+  "excludeTags": ["POS-APP", "APP公共"]
+}
+```
+
+**注意：**
+- `includeTags` 和 `excludeTags` 不建议同时使用
+- 如果同时设置，`includeTags` 优先级更高
+- 这里使用的是 Swagger 中的**原始 tag 名称**，不是 `tagMapping` 映射后的名称
 
 ## 生成的文件结构
 
